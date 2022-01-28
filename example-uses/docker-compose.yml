@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  softflowd:
+    build: ./softflowd
+    links:
+      - libnetflow9
+    volumes:
+      - ./test.pcap:/tmp/test.pcap:ro
+    depends_on:
+      - libnetflow9
+
+  libnetflow9:
+    build: ./libnetflow9
